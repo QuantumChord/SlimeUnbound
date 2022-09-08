@@ -4,22 +4,26 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
-    public float mouseSensitivity = 100f;
-
-    public Transform playerPoint;
-
-    float xRotate = 0f;
-
-    // Update is called once per frame
+    public float turnSpeed = 4.0f;
+    public GameObject target;
+    private float targetDistance;
+    public float minTurnAngle = -90.0f;
+    public float maxTurnAngle = 0.0f;
+    private float rotX;
+    void Start()
+    {
+        targetDistance = Vector3.Distance(transform.position, target.transform.position);
+    }
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-
-        xRotate -= mouseY;
-        xRotate = Mathf.Clamp(xRotate, -90f, 90f);
-
-        transform.localRotation = Quaternion.Euler(xRotate, 0f, 0f);
-        playerPoint.Rotate(Vector3.up * mouseX);
+        // get the mouse inputs
+        float y = Input.GetAxis("Mouse X") * turnSpeed;
+        rotX += Input.GetAxis("Mouse Y") * turnSpeed;
+        // clamp the vertical rotation
+        rotX = Mathf.Clamp(rotX, minTurnAngle, maxTurnAngle);
+        // rotate the camera
+        transform.eulerAngles = new Vector3(-rotX, transform.eulerAngles.y + y, 0);
+        // move the camera position
+        transform.position = target.transform.position - (transform.forward * targetDistance);
     }
 }
