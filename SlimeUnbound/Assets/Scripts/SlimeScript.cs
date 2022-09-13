@@ -7,10 +7,13 @@ public class SlimeScript : MonoBehaviour
 {
 	public Text pointText;
 
+	public int powerStack;
+
     public int points;
 	void Start()
 	{
         points = 0;
+		powerStack = 0;
 		pointText.text = "Score: 0";
 	}
 
@@ -21,8 +24,22 @@ public class SlimeScript : MonoBehaviour
             points++;
             Destroy(other.gameObject);
         }
+
+		if (other.gameObject.tag == "PowerBoost")
+		{
+			powerStack++;
+			Destroy(other.gameObject);
+		}
         
     }
+
+	public void PowerAwakening()
+	{
+		if (powerStack <= 4)
+		{
+
+		}
+	}
 
 	void Update()
 	{
