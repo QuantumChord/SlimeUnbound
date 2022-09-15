@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     public CharacterController controller;
+    public int boost;
 
     public float speed = 12f;
     public float gravity = 9.81f;
@@ -19,8 +20,8 @@ public class PlayerScript : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
 
-    // Update is called once per frame
-    void Update()
+	// Update is called once per frame
+	void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -32,9 +33,22 @@ public class PlayerScript : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        if(Input.GetKey(KeyCode.LeftShift))
+        boost = GetComponent<SlimeScript>().powerStack;
+
+        if (Input.GetKey(KeyCode.LeftShift) && boost <4)
         {
-            speed = 24f;
+            speed = 12f *2;
+        }
+        else if(boost >= 4)
+        {
+			if (Input.GetKey(KeyCode.LeftShift))
+			{
+                speed = 12f * 4;
+            }
+			else
+			{
+                speed = 12f * 2;
+			}
         }
         else
         {

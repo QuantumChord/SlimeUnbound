@@ -6,15 +6,19 @@ using UnityEngine.UI;
 public class SlimeScript : MonoBehaviour
 {
 	public Text pointText;
+	public Text powerUpText;
+
+	public GameObject player;
 
 	public int powerStack;
+	public int points;
 
-    public int points;
 	void Start()
 	{
         points = 0;
 		powerStack = 0;
 		pointText.text = "Score: 0";
+		powerUpText.text = "Power: 0";
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -33,16 +37,9 @@ public class SlimeScript : MonoBehaviour
         
     }
 
-	public void PowerAwakening()
-	{
-		if (powerStack <= 4)
-		{
-
-		}
-	}
-
 	void Update()
 	{
 		pointText.text = "Score: " + points;
+		powerUpText.text = "Power: " + (powerStack * 25);
 	}
 }
