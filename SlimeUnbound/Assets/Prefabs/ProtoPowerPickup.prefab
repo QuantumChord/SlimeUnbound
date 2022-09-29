@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4845176394182564807}
   - component: {fileID: 4845176394182564804}
   - component: {fileID: 4845176394182564805}
+  - component: {fileID: 5138305573697946267}
   m_Layer: 0
   m_Name: ProtoPowerPickup
   m_TagString: PowerBoost
@@ -95,3 +96,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5138305573697946267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845176394182564666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a13ab183cc3dc42e5b807c9d709129b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpType: 
+  powerUpAmount: 0

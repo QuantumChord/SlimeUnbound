@@ -8,8 +8,6 @@ public class SlimeScript : MonoBehaviour
 	public Text pointText;
 	public Text powerUpText;
 
-	public GameObject player;
-
 	public int powerStack;
 	public int points;
 
