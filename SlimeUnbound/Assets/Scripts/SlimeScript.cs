@@ -13,6 +13,8 @@ public class SlimeScript : MonoBehaviour
 	public int powerStack;
 	public int points;
 
+	public float timer = 20f;
+
 	void Start()
 	{
         points = 0;
@@ -41,5 +43,17 @@ public class SlimeScript : MonoBehaviour
 	{
 		pointText.text = "Score: " + points;
 		powerUpText.text = "Power: " + (powerStack * 25);
+		if (powerStack == 4)
+		{
+			timer -= Time.deltaTime;
+
+			if (timer < 0)
+			{
+				powerStack = 0;
+				timer = 20;
+			}
+
+			powerUpText.text = "Power: Full Charge";
+		}
 	}
 }

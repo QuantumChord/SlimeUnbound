@@ -41,7 +41,7 @@ public class PlayerScript : MonoBehaviour
         }
         else if(boost >= 4)
         {
-			if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift))
 			{
                 speed = 12f * 4;
             }

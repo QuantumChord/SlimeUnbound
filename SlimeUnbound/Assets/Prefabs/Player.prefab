@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 376931512626520697}
+  boost: 0
   speed: 12
   gravity: -9.81
   jumpHeight: 3
@@ -106,6 +107,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   doubleJump: 0
+  cam: {fileID: 376931513786748998}
 --- !u!114 &6707465496421660644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +125,7 @@ MonoBehaviour:
   player: {fileID: 0}
   powerStack: 0
   points: 0
+  timer: 20
 --- !u!1 &376931513786748998
 GameObject:
   m_ObjectHideFlags: 0
