@@ -43,6 +43,7 @@ public class PlayerScript : MonoBehaviour
         }
         else if(boost >= 100 && slimeType == 1)
         {
+
             if (Input.GetKey(KeyCode.LeftShift))
 			{
                 speed = 12f * 4;

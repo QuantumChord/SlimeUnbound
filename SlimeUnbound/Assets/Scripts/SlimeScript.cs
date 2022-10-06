@@ -37,7 +37,6 @@ public class SlimeScript : MonoBehaviour
 		{
 			powerStack += PowerUp.slimeUpAmount;
 			slimePower = 1;
-
 			Destroy(other.gameObject);
 		}
 		else if (other.gameObject.GetComponent<PowerUp>().connectPow == 2)
@@ -75,6 +74,7 @@ public class SlimeScript : MonoBehaviour
 			{
 				powerStack = 0;
 				timer = 20;
+				connectPow = 0;
 			}
 
 			powerUpText.text = "Power: Full Charge";
