@@ -5,12 +5,15 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     public CharacterController controller;
+    public Transform cam;
     public int boost;
     public int slimeType;
 
-    public float speed = 12f;
+    public float speed = 8f;
     public float gravity = 9.81f;
     public float jumpHeight = 3f;
+    public float turnSmoothTime = 0.1f;
+    float turnSmoothVelocity;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -33,6 +36,17 @@ public class PlayerScript : MonoBehaviour
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
+        Vector3 direction = new Vector3(x, 0f, z).normalized;
+
+        if (direction.magnitude >= 0.1f)
+        {
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity,turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+            Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            controller.Move(moveDirection.normalized * speed * Time.deltaTime);
+        }
 
         boost = GetComponent<SlimeScript>().powerStack;
         slimeType = GetComponent<SlimeScript>().slimePower;
@@ -46,11 +60,11 @@ public class PlayerScript : MonoBehaviour
 
             if (Input.GetKey(KeyCode.LeftShift))
 			{
-                speed = 12f * 4;
+                speed = 24f;
             }
 			else
 			{
-                speed = 12f * 3;
+                speed = 20f;
 			}
 
         }
@@ -60,11 +74,11 @@ public class PlayerScript : MonoBehaviour
 
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                speed = 12f * 3;
+                speed = 20f;
             }
             else
             {
-                speed = 12f *2;
+                speed = 16f;
             }
 
         }
@@ -74,24 +88,19 @@ public class PlayerScript : MonoBehaviour
 
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                speed = 12f;
+                speed = 8f;
             }
             else
             {
-                speed = 8f;
+                speed = 6f;
             }
 
         }
         else
         {
             jumpHeight = 3f;
-            speed = 12f;
+            speed = 8f;
         }
-
-        Vector3 move = transform.right * x + transform.forward * z;
-
-        controller.Move(move * speed * Time.deltaTime);
-
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
             doubleJump = true;
@@ -103,7 +112,6 @@ public class PlayerScript : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             doubleJump = false;
         }
-
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
