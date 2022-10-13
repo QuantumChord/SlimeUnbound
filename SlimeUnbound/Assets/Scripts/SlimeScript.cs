@@ -12,8 +12,6 @@ public class SlimeScript : MonoBehaviour
 	public int points;
 	public int slimePower;
 
-	public int tempPow;
-
 	public float timer = 20f;
 
 	void Start()
@@ -32,34 +30,36 @@ public class SlimeScript : MonoBehaviour
             points++;
 			Destroy(other.gameObject);
 		}
-
-		if (other.gameObject.GetComponent<PowerUp>().connectPow == 1)
+		if(other.gameObject.tag == "PowerBoost")
 		{
-			powerStack += PowerUp.slimeUpAmount;
-			slimePower = 1;
-			Destroy(other.gameObject);
-		}
-		else if (other.gameObject.GetComponent<PowerUp>().connectPow == 2)
-		{
-			powerStack += PowerUp.slimeUpAmount;
-			slimePower = 2;
-			Destroy(other.gameObject);
-		}
+			if (other.gameObject.GetComponent<PowerUp>().connectPow == 1 && (slimePower == 1 || slimePower == 0))
+			{
+				powerStack += PowerUp.slimeUpAmount;
+				slimePower = 1;
+				Destroy(other.gameObject);
+			}
+			else if (other.gameObject.GetComponent<PowerUp>().connectPow == 2 && (slimePower == 2 || slimePower == 0))
+			{
+				powerStack += PowerUp.slimeUpAmount;
+				slimePower = 2;
+				Destroy(other.gameObject);
+			}
 
-		else if (other.gameObject.GetComponent<PowerUp>().connectPow == 3)
-		{
-			powerStack += PowerUp.slimeUpAmount;
-			slimePower = 3;
-			Destroy(other.gameObject);
-		}
+			else if (other.gameObject.GetComponent<PowerUp>().connectPow == 3 && (slimePower == 3 || slimePower == 0))
+			{
+				powerStack += PowerUp.slimeUpAmount;
+				slimePower = 3;
+				Destroy(other.gameObject);
+			}
 
-		else
-		{
-			powerStack = 0;
-			slimePower = 0;
-			Destroy(other.gameObject);
+			else
+			{
+				powerStack = other.gameObject.GetComponent<PowerUp>().connectPow;
+				timer = 20;
+				slimePower = 25;
+				Destroy(other.gameObject);
+			}
 		}
-
 	}
 
 	void Update()
@@ -74,7 +74,7 @@ public class SlimeScript : MonoBehaviour
 			{
 				powerStack = 0;
 				timer = 20;
-				connectPow = 0;
+				slimePower = 0;
 			}
 
 			powerUpText.text = "Power: Full Charge";
