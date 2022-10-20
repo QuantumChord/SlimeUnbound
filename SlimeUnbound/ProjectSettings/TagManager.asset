@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Collectibles
   - PowerBoost
+  - MovePlat
   layers:
   - Default
   - TransparentFX
