@@ -64,6 +64,19 @@ public class SlimeScript : MonoBehaviour
 				Destroy(other.gameObject);
 			}
 		}
+
+		if(other.gameObject.tag == "MovePlat")
+		{
+			transform.parent = other.transform;
+		}
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		if (other.gameObject.tag == "MovePlat")
+		{
+			transform.parent = null;
+		}
 	}
 
 	void Update()
