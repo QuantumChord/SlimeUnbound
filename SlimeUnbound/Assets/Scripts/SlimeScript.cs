@@ -12,8 +12,6 @@ public class SlimeScript : MonoBehaviour
 	public int points;
 	public int slimePower;
 
-	public int tempPow;
-
 	public float timer = 20f;
 
 	void Start()

@@ -19,6 +19,10 @@ public class PlayerScript : MonoBehaviour
     public bool doubleJump = false;
     bool isGrounded;
 
+    public float projectileSpeed = 20f;
+    public GameObject projectile;
+    public Transform projectilePoint;
+
 	// Update is called once per frame
 	void Update()
     {
@@ -43,7 +47,7 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift) && boost <100)
         {
-            speed = 12f *2;
+            speed = 16f;
         }
         else if(boost >= 100 && slimeType == 1)
         {
@@ -106,5 +110,17 @@ public class PlayerScript : MonoBehaviour
 
         playerVelocity.y += gravity * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Shoot();
+        }
+    }
+
+    public void Shoot()
+    {
+        GameObject bullet = Instantiate(projectile, projectilePoint.position, projectilePoint.rotation);
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        rb.AddForce(projectilePoint.forward * projectileSpeed, ForceMode.Impulse);
     }
 }
