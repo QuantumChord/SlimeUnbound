@@ -119,8 +119,18 @@ public class PlayerScript : MonoBehaviour
 
     public void Shoot()
     {
-        GameObject bullet = Instantiate(projectile, projectilePoint.position, projectilePoint.rotation);
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        rb.AddForce(projectilePoint.forward * projectileSpeed, ForceMode.Impulse);
+        Debug.DrawRay(projectilePoint.position, projectilePoint.forward * 1000, Color.red, 2f);
+
+        Ray ray = new Ray(projectilePoint.position, projectilePoint.forward);
+        RaycastHit hit;
+
+        if(Physics.Raycast(ray ,out hit, 1000))
+		{
+            Debug.Log(hit.transform.name);
+
+            GameObject bullet = Instantiate(projectile, projectilePoint.position, projectilePoint.rotation);
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            rb.AddForce(projectilePoint.forward * projectileSpeed, ForceMode.Impulse);
+        }
     }
 }
