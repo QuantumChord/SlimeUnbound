@@ -21,10 +21,11 @@ public class PlayerScript : MonoBehaviour
 
     public float projectileSpeed = 20f;
     public GameObject projectile;
-    public Transform projectilePoint;
+    public GameObject projectileZone;
+    public Vector3 projectileOriginPosition;
 
-	// Update is called once per frame
-	void Update()
+    // Update is called once per frame
+    void Update()
     {
         isGrounded = controller.isGrounded;
 
@@ -111,26 +112,14 @@ public class PlayerScript : MonoBehaviour
         playerVelocity.y += gravity * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
+        Vector3 targetPosition = Camera.main.transform.TransformPoint(Vector3.forward * 500);
+        Vector3 projectileOriginPosition = projectileZone.transform.position;
+        Quaternion projectileRotation = Quaternion.LookRotation(targetPosition - projectileOriginPosition);
+		
+
         if (Input.GetButtonDown("Fire1"))
         {
-            Shoot();
-        }
-    }
-
-    public void Shoot()
-    {
-        Debug.DrawRay(projectilePoint.position, projectilePoint.forward * 1000, Color.red, 2f);
-
-        Ray ray = new Ray(projectilePoint.position, projectilePoint.forward);
-        RaycastHit hit;
-
-        if(Physics.Raycast(ray ,out hit, 1000))
-		{
-            Debug.Log(hit.transform.name);
-
-            GameObject bullet = Instantiate(projectile, projectilePoint.position, projectilePoint.rotation);
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            rb.AddForce(projectilePoint.forward * projectileSpeed, ForceMode.Impulse);
+            Instantiate(projectile, projectileOriginPosition, projectileRotation);
         }
     }
 }

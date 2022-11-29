@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class MouseFire : MonoBehaviour
 {
-    public Vector2 turn;
-
-	void Start()
+    public float projectileSpeed = 20f;
+    public GameObject projectile;
+    public GameObject projectileZone;
+    public Transform projectilePoint;
+    public Vector3 projectileOriginPosition;
+    void Start()
 	{
 		Cursor.lockState = CursorLockMode.Locked;
 	}
@@ -14,9 +17,17 @@ public class MouseFire : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-        turn.x += Input.GetAxis("Mouse X");
-        turn.y += Input.GetAxis("Mouse Y");
 
-        transform.localRotation = Quaternion.Euler(-turn.y, turn.x, 0);
+        Vector3 targetPosition = Camera.main.transform.TransformPoint(Vector3.forward * 500);
+        Vector3 projectileOriginPosition = projectileZone.transform.position;
+        Quaternion projectileRotation = Quaternion.LookRotation(targetPosition - projectileOriginPosition);
+
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            GameObject bullet = Instantiate(projectile, projectileOriginPosition, projectileRotation);
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            rb.AddForce(projectilePoint.forward * projectileSpeed, ForceMode.Impulse);
+        }
     }
 }

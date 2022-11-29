@@ -10,32 +10,23 @@ public class SlimeProjectile : MonoBehaviour
     public double damageOverTime;
     public int slimeBulletType;
 
+    public float speed;
+
     void Start()
     {
         projDamage = 4;
-        elemDamage = 0;
-        damageOverTime = 0;
-        slimeBulletType = 0;
     }
 
-    public void OnCollisionEnter(Collision collision)
-    {
-        if(collision.collider.tag == "Terrain")
-        {
+	public void OnTriggerEnter(Collider other)
+	{
+		if(other.CompareTag("Terrain"))
+		{
             Destroy(gameObject);
-        }
-
-        if (collision.collider.tag == "Enemy")
-        {
-            Destroy(gameObject);
-        }
+		}
     }
 
-    public void elementalDamage()
+	public void ElementalDamage()
     {
-
-        slimeBulletType = GetComponent<SlimeScript>().slimePower;
-
         if (slimeBulletType == 1)
         {
             elemDamage = 2;
@@ -62,6 +53,10 @@ public class SlimeProjectile : MonoBehaviour
 
     void Update()
     {
+        ElementalDamage();
+
         fullDamage = projDamage + elemDamage;
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.AddForce(transform.forward * speed, ForceMode.Impulse);
     }
 }
