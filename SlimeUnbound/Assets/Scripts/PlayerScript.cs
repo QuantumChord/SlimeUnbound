@@ -23,6 +23,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject projectile;
     public GameObject projectileZone;
     public Vector3 projectileOriginPosition;
+    public float projSpeed = 500f;
 
     // Update is called once per frame
     void Update()
@@ -119,7 +120,8 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Instantiate(projectile, projectileOriginPosition, projectileRotation);
+            GameObject slimeProj = Instantiate(projectile, projectileOriginPosition, projectileRotation);
+            slimeProj.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, projSpeed));
         }
     }
 }

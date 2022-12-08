@@ -8,6 +8,7 @@ TagManager:
   - PowerBoost
   - MovePlat
   - Terrain
+  - GroundEnemy
   layers:
   - Default
   - TransparentFX

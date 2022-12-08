@@ -10,8 +10,6 @@ public class SlimeProjectile : MonoBehaviour
     public double damageOverTime;
     public int slimeBulletType;
 
-    public float speed;
-
     void Start()
     {
         projDamage = 4;
@@ -54,9 +52,5 @@ public class SlimeProjectile : MonoBehaviour
     void Update()
     {
         ElementalDamage();
-
-        fullDamage = projDamage + elemDamage;
-        Rigidbody rb = GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * speed, ForceMode.Impulse);
     }
 }

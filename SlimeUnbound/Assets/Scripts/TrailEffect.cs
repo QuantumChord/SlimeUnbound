@@ -5,24 +5,49 @@ using UnityEngine;
 public class TrailEffect : MonoBehaviour
 {
     public TrailRenderer trail;
+    public GameObject trailFollower;
+    public GameObject colliderPrefab;
 
-    public void CreateTrailCollider()
+    public int poolSize = 5;
+    GameObject[] pool;
+
+    void Start()
     {
-        MeshCollider collider = GetComponent<MeshCollider>();
-
-        if(collider == null)
+        trail = GetComponent<TrailRenderer>();
+        pool = new GameObject[poolSize];
+        for(int i = 0; i<pool.Length; i++)
         {
-            collider = gameObject.AddComponent<MeshCollider>();
+            pool[i] = Instantiate(colliderPrefab);
         }
-
-        Mesh mesh = new Mesh();
-        trail.BakeMesh(mesh,true);
-        collider.sharedMesh = mesh;
     }
 
     // Update is called once per frame
     void Update()
     {
-        CreateTrailCollider();
+        if (!trail.isVisible)
+        {
+            for(int i = 0; i < pool.Length; i++)
+            {
+                pool[i].gameObject.SetActive(false);
+            }
+        }
+
+        else
+        {
+            TrailCollission();
+        }
+    }
+
+    void TrailCollission()
+    {
+        for(int i = 0; i < pool.Length; i++)
+        {
+            if(pool[i].gameObject.activeSelf == false)
+            {
+                pool[i].gameObject.SetActive(true);
+                pool[i].gameObject.transform.position = trailFollower.gameObject.transform.position;
+                return;
+            }
+        }
     }
 }
