@@ -9,6 +9,7 @@ TagManager:
   - MovePlat
   - Terrain
   - GroundEnemy
+  - SlimePuddle
   layers:
   - Default
   - TransparentFX

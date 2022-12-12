@@ -27,12 +27,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701521913817112209}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.937585, y: 0.5, z: 17.284714}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 3492751175907102351}
-  - {fileID: 2944165080825057690}
   - {fileID: 1945764017894318329}
+  - {fileID: 2944165080825057690}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48,12 +48,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1
-  m_Radius: 0.9
+  m_Radius: 1
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.7, z: 0}
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!114 &1701521913817112208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,6 +79,9 @@ MonoBehaviour:
   projectileZone: {fileID: 6067040983980226013}
   projectileOriginPosition: {x: 0, y: 0, z: 0}
   projSpeed: 500
+  puddleTrigger: 0
+  gooZone: {fileID: 3382837487879229437, guid: 185383e6cb73a47358eb46a558cc89ec, type: 3}
+  gooPuddle: {fileID: 3382837487879229437, guid: 185383e6cb73a47358eb46a558cc89ec, type: 3}
 --- !u!114 &5743092588760222478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,11 +124,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5177641935159131230}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.464, z: 0}
+  m_LocalPosition: {x: 0, y: -0.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1701521913817112205}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &6067040983980226013
 GameObject:
@@ -155,7 +158,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1701521913817112205}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4031293193876679012
 PrefabInstance:

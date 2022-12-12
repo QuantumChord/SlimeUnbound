@@ -25,6 +25,10 @@ public class PlayerScript : MonoBehaviour
     public Vector3 projectileOriginPosition;
     public float projSpeed = 500f;
 
+    public bool puddleTrigger;
+    public GameObject gooZone;
+    public GameObject gooPuddle;
+
     // Update is called once per frame
     void Update()
     {
@@ -98,6 +102,19 @@ public class PlayerScript : MonoBehaviour
             speed = 8f;
         }
 
+        if (puddleTrigger)
+        {
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                speed = 10f;
+            }
+
+            else
+            {
+                speed = 5f;
+            }
+        }
+
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
             doubleJump = true;
@@ -123,5 +140,31 @@ public class PlayerScript : MonoBehaviour
             GameObject slimeProj = Instantiate(projectile, projectileOriginPosition, projectileRotation);
             slimeProj.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, projSpeed));
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            DepositGooLoad();
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("SlimePuddle"))
+        {
+            puddleTrigger = true;
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("SlimePuddle"))
+        {
+            puddleTrigger = false;
+        }
+    }
+
+    public void DepositGooLoad()
+    {
+        Instantiate(gooPuddle, gooZone.transform.position, gooPuddle.transform.rotation);
     }
 }
