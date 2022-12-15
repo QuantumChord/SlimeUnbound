@@ -70,7 +70,7 @@ MonoBehaviour:
   player: {fileID: 0}
   bat: {fileID: 0}
   distanceFromPlayer: 0
-  health: 0
+  health: 6
 --- !u!1001 &7583354341370354218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -122,6 +122,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1526964690268444965, guid: f419e093fb0bcaf4c863a038b8c6b935, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9748f815bbf781e4ea9404249e4d786e, type: 2}
     - target: {fileID: 919132149155446097, guid: f419e093fb0bcaf4c863a038b8c6b935, type: 3}
       propertyPath: m_Name
       value: bat_fixed

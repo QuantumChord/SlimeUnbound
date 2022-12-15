@@ -25,7 +25,7 @@ public class BatEnemy : MonoBehaviour
 
         if(distanceFromPlayer > 40)
 		{
-            batMesh.ResetPath();
+            batMesh.isStopped = true;
 		}
 
 		else

@@ -25,7 +25,7 @@ public class SpiderEnemy : MonoBehaviour
 
         if (distanceFromPlayer > 40)
         {
-            spiderMesh.ResetPath();
+            spiderMesh.isStopped = true;
         }
 
         else
