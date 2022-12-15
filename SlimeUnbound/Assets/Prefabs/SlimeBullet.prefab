@@ -114,13 +114,6 @@ MonoBehaviour:
   elemDamage: 0
   damageOverTime: 0
   slimeBulletType: 0
-  speed: 2
-  material:
-  - {fileID: 2100000, guid: 0cad908967e1a49188e54b7c74f6a3ea, type: 2}
-  - {fileID: 2100000, guid: b387e040a62060d468113e182ab4e74d, type: 2}
-  - {fileID: 2100000, guid: 2355a7e2b4e08f04a91bd5dcb5836f51, type: 2}
-  - {fileID: 2100000, guid: c5e862346d94fa445b666e5ef18e9671, type: 2}
-  player: {fileID: 1701521913817112209, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
 --- !u!54 &6503399895705429208
 Rigidbody:
   m_ObjectHideFlags: 0

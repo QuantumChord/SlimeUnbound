@@ -9,6 +9,8 @@ public class PlayerScript : MonoBehaviour
     public int boost;
     public int slimeType;
 
+    public int health;
+
     public float speed = 8f;
     private float gravity = -9.81f;
     public float jumpHeight = 3f;
@@ -163,8 +165,34 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public void DepositGooLoad()
+	public void OnCollisionEnter(Collision collision)
+	{
+            if (collision.collider.CompareTag("SpiderEnemy"))
+            {
+                TakeDamage();
+            }
+
+            if (collision.collider.CompareTag("BatEnemy"))
+            {
+                TakeDamage();
+            }
+    }
+
+    public void TakeDamage()
+	{
+        --health;
+    }
+
+	public void DepositGooLoad()
     {
         Instantiate(gooPuddle, gooZone.transform.position, gooPuddle.transform.rotation);
     }
+
+    public void Death()
+	{
+        if (health == 0)
+		{
+            Destroy(gameObject);
+		}
+	}
 }

@@ -8,8 +8,9 @@ TagManager:
   - PowerBoost
   - MovePlat
   - Terrain
-  - GroundEnemy
   - SlimePuddle
+  - BatEnemy
+  - SpiderEnemy
   layers:
   - Default
   - TransparentFX

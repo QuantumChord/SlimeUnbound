@@ -3,50 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BatEnemy : MonoBehaviour
+public class SpiderEnemy : MonoBehaviour
 {
     public Transform player;
-    public Transform bat;
-    protected NavMeshAgent batMesh;
-
-    public double distanceFromPlayer;
+    public Transform spider;
+    protected NavMeshAgent spiderMesh;
 
     public int health;
+
+    public double distanceFromPlayer;
     // Start is called before the first frame update
     void Start()
     {
-        batMesh = GetComponent<NavMeshAgent>();
+        spiderMesh = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        distanceFromPlayer = Vector3.Distance(bat.position, player.position);
+        distanceFromPlayer = Vector3.Distance(spider.position, player.position);
 
-        if(distanceFromPlayer > 40)
-		{
-            batMesh.ResetPath();
-		}
+        if (distanceFromPlayer > 40)
+        {
+            spiderMesh.ResetPath();
+        }
 
-		else
-		{
-            batMesh.SetDestination(player.position);
+        else
+        {
+            spiderMesh.SetDestination(player.position);
             transform.LookAt(player);
             transform.rotation *= Quaternion.FromToRotation(Vector3.left, Vector3.forward);
-		}
+        }
 
-        if (health == 0)
+        if(health == 0)
 		{
             Death();
 		}
     }
 
     public void Damage(int damageAmount)
-	{
+    {
         health -= damageAmount;
     }
+
     public void Death()
-    {
+	{
         Destroy(gameObject);
-    }
+	}
 }

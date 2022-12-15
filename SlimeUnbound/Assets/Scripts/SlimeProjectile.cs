@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class SlimeProjectile : MonoBehaviour
 {
-    public double fullDamage;
-    public double projDamage;
-    public double elemDamage;
-    public double damageOverTime;
+    public int fullDamage;
+    public int projDamage;
+    public int elemDamage;
+    public int damageOverTime;
     public int slimeBulletType;
 
     void Start()
     {
-        projDamage = 4;
+        projDamage = 1;
     }
 
 	public void OnTriggerEnter(Collider other)
@@ -21,6 +21,18 @@ public class SlimeProjectile : MonoBehaviour
 		{
             Destroy(gameObject);
 		}
+
+		if (other.CompareTag("BatEnemy"))
+		{
+            other.GetComponent<BatEnemy>().Damage(fullDamage);
+            Destroy(gameObject);
+        }
+
+        if (other.CompareTag("SpiderEnemy"))
+        {
+            other.GetComponent<SpiderEnemy>().Damage(fullDamage);
+            Destroy(gameObject);
+        }
     }
 
 	public void ElementalDamage()
@@ -52,5 +64,7 @@ public class SlimeProjectile : MonoBehaviour
     void Update()
     {
         ElementalDamage();
+
+        fullDamage = projDamage + elemDamage;
     }
 }
