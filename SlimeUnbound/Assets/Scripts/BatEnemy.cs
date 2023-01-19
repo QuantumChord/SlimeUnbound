@@ -22,17 +22,17 @@ public class BatEnemy : MonoBehaviour
     void Update()
     {
         distanceFromPlayer = Vector3.Distance(bat.position, player.position);
+        batMesh.SetDestination(player.position);
 
-        if(distanceFromPlayer > 40)
+        if (distanceFromPlayer > 40)
 		{
             batMesh.isStopped = true;
 		}
 
 		else
 		{
-            batMesh.SetDestination(player.position);
+            batMesh.isStopped = false;
             transform.LookAt(player);
-            transform.rotation *= Quaternion.FromToRotation(Vector3.left, Vector3.forward);
 		}
 
         if (health == 0)

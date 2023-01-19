@@ -22,6 +22,7 @@ public class SpiderEnemy : MonoBehaviour
     void Update()
     {
         distanceFromPlayer = Vector3.Distance(spider.position, player.position);
+        spiderMesh.SetDestination(player.position);
 
         if (distanceFromPlayer > 40)
         {
@@ -30,9 +31,8 @@ public class SpiderEnemy : MonoBehaviour
 
         else
         {
-            spiderMesh.SetDestination(player.position);
+            spiderMesh.isStopped = false;
             transform.LookAt(player);
-            transform.rotation *= Quaternion.FromToRotation(Vector3.left, Vector3.forward);
         }
 
         if(health == 0)
