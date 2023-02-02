@@ -11,6 +11,7 @@ TagManager:
   - SlimePuddle
   - BatEnemy
   - SpiderEnemy
+  - Projectile
   layers:
   - Default
   - TransparentFX

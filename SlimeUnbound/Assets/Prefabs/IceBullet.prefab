@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6503399895705429208}
   m_Layer: 0
   m_Name: IceBullet
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,7 +114,6 @@ MonoBehaviour:
   elemDamage: 0
   damageOverTime: 0
   slimeBulletType: 2
-  speed: 2
 --- !u!54 &6503399895705429208
 Rigidbody:
   m_ObjectHideFlags: 0

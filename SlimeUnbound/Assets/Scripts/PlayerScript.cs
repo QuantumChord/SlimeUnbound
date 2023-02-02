@@ -26,14 +26,30 @@ public class PlayerScript : MonoBehaviour
     public GameObject projectileZone;
     public Vector3 projectileOriginPosition;
     public float projSpeed = 500f;
-
+    public GameObject[] projType;
     public bool puddleTrigger;
     public GameObject gooZone;
     public GameObject gooPuddle;
 
+    void Start()
+    {
+        //projType = 
+
+        //projType.Add(GameObject.Find("FlameBullet"));
+        //projType.Add(GameObject.Find("IceBullet"));
+        //projType.Add(GameObject.Find("RockBullet"));
+        //projType.Add(GameObject.Find("SlimeBullet"));
+        //Debug.Log(projType[1].GetType());
+        //Debug.Log(projType[2].GetType());
+        //Debug.Log(projType[3].GetType());
+        //Debug.Log(projType[4].GetType());
+    }
+
     // Update is called once per frame
     void Update()
     {
+
+        //This section controls movement and the camera controls
         isGrounded = controller.isGrounded;
 
         float x = Input.GetAxis("Horizontal");
@@ -68,7 +84,6 @@ public class PlayerScript : MonoBehaviour
 			{
                 speed = 20f;
 			}
-
         }
         else if (boost >= 100 && slimeType == 2)
         {
@@ -132,6 +147,7 @@ public class PlayerScript : MonoBehaviour
         playerVelocity.y += gravity * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
+        //This section controls the bullet firing system
         Vector3 targetPosition = Camera.main.transform.TransformPoint(Vector3.forward * 500);
         Vector3 projectileOriginPosition = projectileZone.transform.position;
         Quaternion projectileRotation = Quaternion.LookRotation(targetPosition - projectileOriginPosition);
@@ -143,12 +159,35 @@ public class PlayerScript : MonoBehaviour
             slimeProj.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, projSpeed));
         }
 
+        //This section allows for bullet changing during elemental change
+        //if(boost>=100 && slimeType == 1)
+        //{
+        //    projectile = GameObject.Find("FlameBullet");
+        //}
+
+        //else if(boost>=100 && slimeType == 2)
+        //{
+        //    projectile = GameObject.Find("IceBullet");
+        //}
+
+        //else if(boost>=100 && slimeType == 3)
+        //{
+        //    projectile = GameObject.Find("RockBullet");
+        //}
+
+        //else
+        //{
+        //    projectile = GameObject.Find("SlimeBullet");
+        //} 
+
+        //This section allows the goo to be shot using the Q key
         if (Input.GetKeyDown(KeyCode.Q))
         {
             DepositGooLoad();
         }
     }
 
+    //This changes how it reacts with slime puddles it leaves
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("SlimePuddle"))
@@ -165,6 +204,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    //This has the player take damage from the enemies
 	public void OnCollisionEnter(Collision collision)
 	{
             if (collision.collider.CompareTag("SpiderEnemy"))
@@ -183,11 +223,15 @@ public class PlayerScript : MonoBehaviour
         --health;
     }
 
+
+    //This allows the slime to deposit the slime puddle
 	public void DepositGooLoad()
     {
         Instantiate(gooPuddle, gooZone.transform.position, gooPuddle.transform.rotation);
     }
 
+
+    //This destroyes the slime
     public void Death()
 	{
         if (health == 0)
