@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4332,6 +4332,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1701521913817112208, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
+      propertyPath: projType.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1701521913817112208, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
       propertyPath: invincibilitySeconds
       value: 1.5
       objectReference: {fileID: 0}
@@ -4339,6 +4343,22 @@ PrefabInstance:
       propertyPath: invincibilityDeltaTime
       value: 0.15
       objectReference: {fileID: 0}
+    - target: {fileID: 1701521913817112208, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
+      propertyPath: projType.Array.data[0]
+      value: 
+      objectReference: {fileID: 9005904693223467595, guid: d8cc6bb043cf14e4e834972d7c2c359a, type: 3}
+    - target: {fileID: 1701521913817112208, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
+      propertyPath: projType.Array.data[1]
+      value: 
+      objectReference: {fileID: 9005904693223467595, guid: 5397836651962ed40a6e2ec9e98939e4, type: 3}
+    - target: {fileID: 1701521913817112208, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
+      propertyPath: projType.Array.data[2]
+      value: 
+      objectReference: {fileID: 9005904693223467595, guid: c8b7f6ce1560cc443826a4af6030ed1c, type: 3}
+    - target: {fileID: 1701521913817112208, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
+      propertyPath: projType.Array.data[3]
+      value: 
+      objectReference: {fileID: 9005904693223467595, guid: c22f514646c1b4e159a63ae3326de059, type: 3}
     - target: {fileID: 1701521913817112209, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
       propertyPath: m_Name
       value: SlimePlayer

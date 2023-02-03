@@ -33,16 +33,7 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
-        //projType = 
-
-        //projType.Add(GameObject.Find("FlameBullet"));
-        //projType.Add(GameObject.Find("IceBullet"));
-        //projType.Add(GameObject.Find("RockBullet"));
-        //projType.Add(GameObject.Find("SlimeBullet"));
-        //Debug.Log(projType[1].GetType());
-        //Debug.Log(projType[2].GetType());
-        //Debug.Log(projType[3].GetType());
-        //Debug.Log(projType[4].GetType());
+        projectile = projType[3];
     }
 
     // Update is called once per frame
@@ -160,25 +151,25 @@ public class PlayerScript : MonoBehaviour
         }
 
         //This section allows for bullet changing during elemental change
-        //if(boost>=100 && slimeType == 1)
-        //{
-        //    projectile = GameObject.Find("FlameBullet");
-        //}
+        if(boost>=100 && slimeType == 1)
+        {
+            projectile = projectile = projType[0];
+        }
 
-        //else if(boost>=100 && slimeType == 2)
-        //{
-        //    projectile = GameObject.Find("IceBullet");
-        //}
+        else if(boost>=100 && slimeType == 2)
+        {
+            projectile = projectile = projType[1];
+        }
 
-        //else if(boost>=100 && slimeType == 3)
-        //{
-        //    projectile = GameObject.Find("RockBullet");
-        //}
+        else if(boost>=100 && slimeType == 3)
+        {
+            projectile = projectile = projType[2];
+        }
 
-        //else
-        //{
-        //    projectile = GameObject.Find("SlimeBullet");
-        //} 
+        else
+        {
+            projectile = projectile = projType[3];
+        } 
 
         //This section allows the goo to be shot using the Q key
         if (Input.GetKeyDown(KeyCode.Q))
