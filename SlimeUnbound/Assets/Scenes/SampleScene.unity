@@ -597,7 +597,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196419193}
-  m_LocalRotation: {x: 0.19611613, y: -0, z: -0, w: 0.9805807}
+  m_LocalRotation: {x: 0.19611613, y: 1e-45, z: -0, w: 0.9805807}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1311,7 +1311,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402863141}
   m_LocalRotation: {x: 0.17824745, y: 0, z: 0, w: 0.9839857}
-  m_LocalPosition: {x: 64.940834, y: 21, z: 20.015804}
+  m_LocalPosition: {x: 65.55, y: 14.36, z: 19.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2045,7 +2045,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5745057075073908217, guid: 3ba7be09f1c3a684cbb37921de9f876c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5745057075073908218, guid: 3ba7be09f1c3a684cbb37921de9f876c, type: 3}
       propertyPath: m_RootOrder
@@ -3583,7 +3583,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904523704}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 64.940834, y: 21, z: 20.015804}
+  m_LocalPosition: {x: 65.55, y: 14.36, z: 19.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 196419195}
@@ -4269,15 +4269,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1701521913817112205, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 64.940834
+      value: 65.55
       objectReference: {fileID: 0}
     - target: {fileID: 1701521913817112205, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16
+      value: 9.36
       objectReference: {fileID: 0}
     - target: {fileID: 1701521913817112205, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 32.015804
+      value: 31.68
       objectReference: {fileID: 0}
     - target: {fileID: 1701521913817112205, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4336,6 +4336,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1701521913817112208, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
+      propertyPath: slimeMat.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1701521913817112208, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
       propertyPath: invincibilitySeconds
       value: 1.5
       objectReference: {fileID: 0}
@@ -4359,6 +4363,22 @@ PrefabInstance:
       propertyPath: projType.Array.data[3]
       value: 
       objectReference: {fileID: 9005904693223467595, guid: c22f514646c1b4e159a63ae3326de059, type: 3}
+    - target: {fileID: 1701521913817112208, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
+      propertyPath: slimeMat.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b387e040a62060d468113e182ab4e74d, type: 2}
+    - target: {fileID: 1701521913817112208, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
+      propertyPath: slimeMat.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2355a7e2b4e08f04a91bd5dcb5836f51, type: 2}
+    - target: {fileID: 1701521913817112208, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
+      propertyPath: slimeMat.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: c5e862346d94fa445b666e5ef18e9671, type: 2}
+    - target: {fileID: 1701521913817112208, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
+      propertyPath: slimeMat.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0cad908967e1a49188e54b7c74f6a3ea, type: 2}
     - target: {fileID: 1701521913817112209, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
       propertyPath: m_Name
       value: SlimePlayer
@@ -4388,6 +4408,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5743092588760222478, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5743092588760222478, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
       propertyPath: pointText
       value: 
       objectReference: {fileID: 1249739876}
@@ -4395,5 +4419,25 @@ PrefabInstance:
       propertyPath: powerUpText
       value: 
       objectReference: {fileID: 887217018}
+    - target: {fileID: 7724554459683481607, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
+      propertyPath: slimeMat.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724554459683481607, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
+      propertyPath: slimeMat.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b387e040a62060d468113e182ab4e74d, type: 2}
+    - target: {fileID: 7724554459683481607, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
+      propertyPath: slimeMat.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2355a7e2b4e08f04a91bd5dcb5836f51, type: 2}
+    - target: {fileID: 7724554459683481607, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
+      propertyPath: slimeMat.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: c5e862346d94fa445b666e5ef18e9671, type: 2}
+    - target: {fileID: 7724554459683481607, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
+      propertyPath: slimeMat.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0cad908967e1a49188e54b7c74f6a3ea, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
