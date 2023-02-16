@@ -27,13 +27,18 @@ public class PlayerScript : MonoBehaviour
     public Vector3 projectileOriginPosition;
     public float projSpeed = 500f;
     public GameObject[] projType;
+
     public bool puddleTrigger;
     public GameObject gooZone;
     public GameObject gooPuddle;
 
+    public Material[] slimeMat;
+    public GameObject slimeBody;
+
     void Start()
     {
         projectile = projType[3];
+        slimeBody.GetComponent<Renderer>().material = slimeMat[3];
     }
 
     // Update is called once per frame
@@ -137,6 +142,27 @@ public class PlayerScript : MonoBehaviour
 
         playerVelocity.y += gravity * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+
+
+        if (boost >= 100 && slimeType == 1)
+        {
+            slimeBody.GetComponent<Renderer>().material = slimeMat[0];
+        }
+
+        else if (boost >= 100 && slimeType == 2)
+        {
+            slimeBody.GetComponent<Renderer>().material = slimeMat[1];
+        }
+
+        else if (boost >= 100 && slimeType == 3)
+        {
+            slimeBody.GetComponent<Renderer>().material = slimeMat[2];
+        }
+
+        else
+        {
+            slimeBody.GetComponent<Renderer>().material = slimeMat[3];
+        }
 
         //This section controls the bullet firing system
         Vector3 targetPosition = Camera.main.transform.TransformPoint(Vector3.forward * 500);
