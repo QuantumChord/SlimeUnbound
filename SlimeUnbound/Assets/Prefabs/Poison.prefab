@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 816534663717145487}
   - component: {fileID: 3309926745580848414}
   m_Layer: 0
-  m_Name: Venom
+  m_Name: Poison
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9748f815bbf781e4ea9404249e4d786e, type: 2}
+  - {fileID: 2100000, guid: 305287137a650e844ae409da028310ac, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

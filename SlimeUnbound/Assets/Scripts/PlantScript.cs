@@ -1,10 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlantScript : MonoBehaviour
 {
-    public GameObject poisonSpot;
+    [SerializeField] Transform player;
+    [SerializeField] float plantRange =20f;
+    private float playerDistance;
+    private NavMeshAgent navMeshAgent;
+
+    public Transform poisonSpot;
+    public GameObject poisonProj;
+    private float fireCountdown = 0f;
+    private float fireRate = 2f;
 
     public Transform[] tunnelArray;
     public Vector3 offset = new Vector3(0, 10, 0);
@@ -21,6 +30,8 @@ public class PlantScript : MonoBehaviour
     {
         transform.position = tunnelArray[0].transform.position;
         plantStatus = 0;
+
+        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -47,6 +58,22 @@ public class PlantScript : MonoBehaviour
             plantStatus = 0;
             plantTime = 0;
 		}
+
+        //Sets distance from player for shooting or biting.
+        playerDistance = Vector3.Distance(player.position, transform.position);
+
+        if(playerDistance <= plantRange)
+        {
+            if(fireCountdown <= 0f)
+            {
+                Instantiate(poisonProj, poisonSpot.position, transform.rotation);
+
+                fireCountdown = 10f / fireRate;
+            }
+            fireCountdown -= Time.deltaTime;
+
+        }
+        
     }
 
     //The "Tunnelling" section for the Plant. Plant burrows down, selects spot before coming up in later section.

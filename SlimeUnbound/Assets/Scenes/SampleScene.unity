@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1481,7 +1481,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402863141}
-  m_LocalRotation: {x: 0.16776298, y: -0.00000006056831, z: 0.0000000103072, w: 0.9858274}
+  m_LocalRotation: {x: 0.16776298, y: 0.00000006232428, z: -0.000000010606022, w: 0.9858274}
   m_LocalPosition: {x: 65.55, y: 20, z: 19.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1855,7 +1855,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580974084}
-  m_LocalRotation: {x: 0.16776298, y: -2.614184e-15, z: 5.9601383e-16, w: 0.9858274}
+  m_LocalRotation: {x: 0.16776298, y: 0.000000014689972, z: -0.000000002499863, w: 0.9858274}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2187,7 +2187,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804412479}
-  m_LocalRotation: {x: 0.13945904, y: -0.000000019049327, z: 0.000000002682818, w: 0.9902279}
+  m_LocalRotation: {x: 0.13945904, y: 0.000000019049326, z: -0.0000000026828177, w: 0.9902279}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2937,11 +2937,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8459930204865683083, guid: 85164eb361db7524b9b7f8bac8de1c2f, type: 3}
   m_PrefabInstance: {fileID: 755163877}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1162158910 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3856835639778761684, guid: 5755f26923a581c42971da61151f2903, type: 3}
-  m_PrefabInstance: {fileID: 1488954692183293543}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1213627416
 GameObject:
   m_ObjectHideFlags: 0
@@ -3641,36 +3636,6 @@ PrefabInstance:
       objectReference: {fileID: 376931511840314558}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ba7be09f1c3a684cbb37921de9f876c, type: 3}
---- !u!1 &1844467605 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5755855830281292156, guid: 5755f26923a581c42971da61151f2903, type: 3}
-  m_PrefabInstance: {fileID: 1488954692183293543}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1844467606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1844467605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e6b3139263812c40af81c025cb621c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poisonSpot: {fileID: 1162158910}
-  tunnelArray:
-  - {fileID: 1903661418}
-  - {fileID: 1737068045}
-  - {fileID: 1270903129}
-  - {fileID: 1224027900}
-  offset: {x: 0, y: 10, z: 0}
-  plantStatus: 0
-  plantTime: 0
-  plantInSeconds: 1
-  plantIndex: 0
-  secondIndex: 0
-  health: 0
 --- !u!1001 &1876042031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4750,30 +4715,6 @@ PrefabInstance:
       propertyPath: powerUpText
       value: 
       objectReference: {fileID: 887217018}
-    - target: {fileID: 0}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: slimeMat.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: slimeMat.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b387e040a62060d468113e182ab4e74d, type: 2}
-    - target: {fileID: 0}
-      propertyPath: slimeMat.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2355a7e2b4e08f04a91bd5dcb5836f51, type: 2}
-    - target: {fileID: 0}
-      propertyPath: slimeMat.Array.data[2]
-      value: 
-      objectReference: {fileID: 2100000, guid: c5e862346d94fa445b666e5ef18e9671, type: 2}
-    - target: {fileID: 0}
-      propertyPath: slimeMat.Array.data[3]
-      value: 
-      objectReference: {fileID: 2100000, guid: 0cad908967e1a49188e54b7c74f6a3ea, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08ba86c4f0e80f14ba309ceba8133424, type: 3}
 --- !u!1001 &1488954692183293543
@@ -4787,6 +4728,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlantPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 8262773294896186811, guid: 5755f26923a581c42971da61151f2903, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 376931511840314558}
+    - target: {fileID: 8262773294896186811, guid: 5755f26923a581c42971da61151f2903, type: 3}
+      propertyPath: fireRate
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8262773294896186811, guid: 5755f26923a581c42971da61151f2903, type: 3}
+      propertyPath: plantRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8262773294896186811, guid: 5755f26923a581c42971da61151f2903, type: 3}
+      propertyPath: tunnelArray.Array.data[0]
+      value: 
+      objectReference: {fileID: 1903661418}
+    - target: {fileID: 8262773294896186811, guid: 5755f26923a581c42971da61151f2903, type: 3}
+      propertyPath: tunnelArray.Array.data[1]
+      value: 
+      objectReference: {fileID: 1737068045}
+    - target: {fileID: 8262773294896186811, guid: 5755f26923a581c42971da61151f2903, type: 3}
+      propertyPath: tunnelArray.Array.data[2]
+      value: 
+      objectReference: {fileID: 1270903129}
+    - target: {fileID: 8262773294896186811, guid: 5755f26923a581c42971da61151f2903, type: 3}
+      propertyPath: tunnelArray.Array.data[3]
+      value: 
+      objectReference: {fileID: 1224027900}
     - target: {fileID: 8855261349555923437, guid: 5755f26923a581c42971da61151f2903, type: 3}
       propertyPath: m_RootOrder
       value: 26
