@@ -32,7 +32,7 @@ public class SpiderEnemy : MonoBehaviour
         else
         {
             spiderMesh.isStopped = false;
-            transform.LookAt(player);
+            transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
         }
 
         if(health == 0)

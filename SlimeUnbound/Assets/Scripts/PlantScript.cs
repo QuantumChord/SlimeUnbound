@@ -64,7 +64,9 @@ public class PlantScript : MonoBehaviour
 
         if(playerDistance <= plantRange)
         {
-            if(fireCountdown <= 0f)
+            transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+
+            if (fireCountdown <= 0f)
             {
                 Instantiate(poisonProj, poisonSpot.position, transform.rotation);
 
