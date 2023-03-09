@@ -80,19 +80,16 @@ MonoBehaviour:
   plantRange: 20
   poisonSpot: {fileID: 5679227153147850196}
   poisonProj: {fileID: 816534663717145485, guid: 7d235aeeeee724444a1da5c54d72d59d, type: 3}
-  fireRate: 0.1
   tunnelArray:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  offset: {x: 0, y: 10, z: 0}
   plantStatus: 0
   plantTime: 0
   plantInSeconds: 1
   plantIndex: 0
-  secondIndex: 0
-  health: 0
+  health: 8
 --- !u!195 &-2433696838642755174
 NavMeshAgent:
   m_ObjectHideFlags: 0

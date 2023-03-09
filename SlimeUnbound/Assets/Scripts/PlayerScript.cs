@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerScript : MonoBehaviour
 {
     public CharacterController controller;
@@ -10,6 +10,7 @@ public class PlayerScript : MonoBehaviour
     public int slimeType;
 
     public int health;
+    public Text healthText;
 
     public float speed = 8f;
     private float gravity = -9.81f;
@@ -27,6 +28,8 @@ public class PlayerScript : MonoBehaviour
     public Vector3 projectileOriginPosition;
     public float projSpeed = 500f;
     public GameObject[] projType;
+    public float shootCountDown = 0f;
+    public float shootRate = 2f;
 
     public bool puddleTrigger;
     public GameObject gooZone;
@@ -44,7 +47,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        healthText.text = "Health: " + health;
         //This section controls movement and the camera controls
         isGrounded = controller.isGrounded;
 
@@ -170,31 +173,39 @@ public class PlayerScript : MonoBehaviour
         Quaternion projectileRotation = Quaternion.LookRotation(targetPosition - projectileOriginPosition);
 		
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && shootCountDown <= 0f)
         {
             GameObject slimeProj = Instantiate(projectile, projectileOriginPosition, projectileRotation);
             slimeProj.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, projSpeed));
+
+            shootCountDown = 6f / shootRate;
         }
+        shootCountDown -= Time.deltaTime;
+
+        if(shootCountDown < 0)
+		{
+            shootCountDown = 0;
+		}
 
         //This section allows for bullet changing during elemental change
-        if(boost>=100 && slimeType == 1)
+        if (boost>=100 && slimeType == 1)
         {
-            projectile = projectile = projType[0];
+            projectile = projType[0];
         }
 
         else if(boost>=100 && slimeType == 2)
         {
-            projectile = projectile = projType[1];
+            projectile = projType[1];
         }
 
         else if(boost>=100 && slimeType == 3)
         {
-            projectile = projectile = projType[2];
+            projectile = projType[2];
         }
 
         else
         {
-            projectile = projectile = projType[3];
+            projectile = projType[3];
         } 
 
         //This section allows the goo to be shot using the Q key
@@ -211,6 +222,12 @@ public class PlayerScript : MonoBehaviour
         {
             puddleTrigger = true;
         }
+
+		if (other.CompareTag("EnemyProj"))
+		{
+            int shotDamage = other.GetComponent<PoisonShot>().damage;
+            health -= shotDamage;
+		}
     }
 
     public void OnTriggerExit(Collider other)
@@ -226,20 +243,23 @@ public class PlayerScript : MonoBehaviour
 	{
             if (collision.collider.CompareTag("SpiderEnemy"))
             {
-                TakeDamage();
+                ContactDamage();
             }
 
             if (collision.collider.CompareTag("BatEnemy"))
             {
-                TakeDamage();
+                ContactDamage();
+            }
+            if (collision.collider.CompareTag("PlantEnemy"))
+            {
+                ContactDamage();
             }
     }
 
-    public void TakeDamage()
+    public void ContactDamage()
 	{
         --health;
     }
-
 
     //This allows the slime to deposit the slime puddle
 	public void DepositGooLoad()

@@ -16,12 +16,11 @@ public class PlantScript : MonoBehaviour
     private float fireRate = 2f;
 
     public Transform[] tunnelArray;
-    public Vector3 offset = new Vector3(0, 10, 0);
     public int plantStatus;
     public float plantTime;
     public float plantInSeconds = 1f;
     public int plantIndex;
-    public int secondIndex;
+    //public int secondIndex;
 
     public int health;
 
@@ -47,13 +46,18 @@ public class PlantScript : MonoBehaviour
             plantTime = 0;
         }
 
+        if(plantStatus==1 && plantTime < 5)
+		{
+            transform.position = tunnelArray[plantIndex].position + new Vector3(0, -10, 0);
+        }
+
         if (plantStatus == 1 && plantTime >= 5)
 		{
             PlantUntunnel();
             plantTime = 0;
 		}
 
-		if (plantStatus == 2 && plantTime >= 2)
+		if (plantStatus == 2 && plantTime >= .5)
         {
             plantStatus = 0;
             plantTime = 0;
@@ -62,79 +66,47 @@ public class PlantScript : MonoBehaviour
         //Sets distance from player for shooting or biting.
         playerDistance = Vector3.Distance(player.position, transform.position);
 
-        if(playerDistance <= plantRange)
+        if(playerDistance <= plantRange && plantStatus == 0)
         {
             transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
 
             if (fireCountdown <= 0f)
             {
-                Instantiate(poisonProj, poisonSpot.position, transform.rotation);
+                GameObject poison = Instantiate(poisonProj, poisonSpot.position, transform.rotation);
+                poison.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward*(100f *playerDistance));
 
-                fireCountdown = 10f / fireRate;
+                fireCountdown = 6f / fireRate;
             }
             fireCountdown -= Time.deltaTime;
-
         }
+
+        if (health <= 0)
+		{
+            Destroy(gameObject);
+		}
         
     }
 
-    //The "Tunnelling" section for the Plant. Plant burrows down, selects spot before coming up in later section.
-    public void PlantTunnel()
+	public void OnTriggerEnter(Collider other)
+	{
+        if (other.CompareTag("Projectile"))
+		{
+            int projDamage = other.GetComponent<SlimeProjectile>().fullDamage;
+            health -= projDamage;
+        }
+	}
+
+	//The "Tunnelling" section for the Plant. Plant burrows down, selects spot before coming up in later section.
+	public void PlantTunnel()
 	{
         plantIndex = Random.Range(0, 3);
-
-        if(secondIndex == plantIndex && plantStatus == 0)
-		{
-            plantIndex = Random.Range(0, 3);
-        }
-
-        if(secondIndex !=plantIndex && plantStatus == 0)
-		{
-            plantStatus = 1;
-            secondIndex = plantIndex;
-		}
-
-        if (plantIndex == 0)
-		{
-            transform.position = tunnelArray[0].transform.position - offset;
-        }
-
-        else if(plantIndex == 1)
-		{
-            transform.position = tunnelArray[1].transform.position - offset;
-        }
-        else if (plantIndex == 2)
-        {
-            transform.position = tunnelArray[2].transform.position - offset;
-        }
-
-		else
-		{
-            transform.position = tunnelArray[3].transform.position - offset;
-        }
+        plantStatus = 1;
 
     }
 
     public void PlantUntunnel()
 	{
+        transform.position = tunnelArray[plantIndex].transform.position;
         plantStatus = 2;
-        if (plantIndex == 0)
-        {
-            transform.position = tunnelArray[0].transform.position;
-        }
-
-        else if (plantIndex == 1)
-        {
-            transform.position = tunnelArray[1].transform.position;
-        }
-        else if (plantIndex == 2)
-        {
-            transform.position = tunnelArray[2].transform.position;
-        }
-
-        else
-        {
-            transform.position = tunnelArray[3].transform.position;
-        }
     }
 }

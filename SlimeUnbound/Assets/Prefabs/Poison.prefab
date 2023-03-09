@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 816534663717145486}
   - component: {fileID: 816534663717145487}
   - component: {fileID: 3309926745580848414}
+  - component: {fileID: -4777207250829337206}
   m_Layer: 0
   m_Name: Poison
-  m_TagString: Untagged
+  m_TagString: EnemyProj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,3 +113,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-4777207250829337206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816534663717145485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e04b3ad541069b243aa0fb05da29b9c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1

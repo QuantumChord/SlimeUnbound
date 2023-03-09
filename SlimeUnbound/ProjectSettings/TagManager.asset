@@ -12,6 +12,8 @@ TagManager:
   - BatEnemy
   - SpiderEnemy
   - Projectile
+  - PlantEnemy
+  - EnemyProj
   layers:
   - Default
   - TransparentFX
