@@ -37,8 +37,19 @@ public class PlantScript : MonoBehaviour
     void Update()
     {
 
-        //Creates a tunneling system for the Plant based on time.
-        plantTime += Time.deltaTime * plantInSeconds;
+        //Uses distance to start and reset the plant timer; a danger radius
+        playerDistance = Vector3.Distance(player.position, transform.position);
+        if (playerDistance <= plantRange)
+        {
+            plantTime += Time.deltaTime * plantInSeconds;
+        }
+
+        else
+        {
+            plantTime = 0;
+        }
+
+        //Creates a tunneling system for the Plant based on time
 
         if (plantStatus == 0 && plantTime >= 10)
         {
@@ -64,7 +75,6 @@ public class PlantScript : MonoBehaviour
 		}
 
         //Sets distance from player for shooting or biting.
-        playerDistance = Vector3.Distance(player.position, transform.position);
 
         if(playerDistance <= plantRange && plantStatus == 0)
         {
