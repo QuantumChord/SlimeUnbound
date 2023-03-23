@@ -168,7 +168,7 @@ public class PlayerScript : MonoBehaviour
         }
 
         //This section controls the bullet firing system
-        Vector3 targetPosition = Camera.main.transform.TransformPoint(Vector3.forward * 500);
+        Vector3 targetPosition = cam.transform.TransformPoint(Vector3.forward * 500);
         Vector3 projectileOriginPosition = projectileZone.transform.position;
         Quaternion projectileRotation = Quaternion.LookRotation(targetPosition - projectileOriginPosition);
 		
