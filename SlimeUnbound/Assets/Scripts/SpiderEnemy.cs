@@ -9,6 +9,12 @@ public class SpiderEnemy : MonoBehaviour
     public Transform spider;
     protected NavMeshAgent spiderMesh;
 
+    public Transform venomSpot;
+    public GameObject venomShot;
+    private float fireCountdown = 0f;
+    private float fireRate = 2f;
+    public bool inRangeFire;
+
     public int health;
 
     public double distanceFromPlayer;
@@ -27,12 +33,21 @@ public class SpiderEnemy : MonoBehaviour
         if (distanceFromPlayer > 40)
         {
             spiderMesh.isStopped = true;
+            inRangeFire = false;
+        }
+
+        else if(distanceFromPlayer <40 && distanceFromPlayer > 20)
+        {
+            spiderMesh.isStopped = true;
+            inRangeFire = true;
+
         }
 
         else
         {
             spiderMesh.isStopped = false;
             transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+            inRangeFire = false;
         }
 
         if(health == 0)
