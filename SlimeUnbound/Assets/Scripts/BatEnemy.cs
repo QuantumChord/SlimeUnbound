@@ -11,6 +11,9 @@ public class BatEnemy : MonoBehaviour
 
     public double distanceFromPlayer;
 
+    public bool batHit;
+    public double hitTimer;
+
     public int health;
     // Start is called before the first frame update
     void Start()
@@ -21,6 +24,7 @@ public class BatEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         distanceFromPlayer = Vector3.Distance(bat.position, player.position);
         batMesh.SetDestination(player.position);
 
@@ -32,7 +36,19 @@ public class BatEnemy : MonoBehaviour
 		else
 		{
             batMesh.isStopped = false;
-            transform.LookAt(player);
+            transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+        }
+
+        if(batHit == true && hitTimer >0)
+		{
+            batMesh.SetDestination(-player.position);
+            hitTimer -= Time.deltaTime;
+        }
+
+        if(hitTimer <= 0)
+		{
+            batHit = false;
+            hitTimer = 0;
 		}
 
         if (health == 0)
@@ -41,7 +57,16 @@ public class BatEnemy : MonoBehaviour
 		}
     }
 
-    public void Damage(int damageAmount)
+	public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+		{
+            hitTimer = 5;
+            batHit = true;
+        }
+	}
+
+	public void Damage(int damageAmount)
 	{
         health -= damageAmount;
     }
