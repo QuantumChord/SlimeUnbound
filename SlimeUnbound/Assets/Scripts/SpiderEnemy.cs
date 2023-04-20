@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class SpiderEnemy : MonoBehaviour
 {
     public Transform player;
-    public Transform spider;
     protected NavMeshAgent spiderMesh;
 
     public Transform venomSpot;
@@ -17,7 +16,7 @@ public class SpiderEnemy : MonoBehaviour
 
     public int health;
 
-    public double distanceFromPlayer;
+    public float distanceFromPlayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,32 +26,50 @@ public class SpiderEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distanceFromPlayer = Vector3.Distance(spider.position, player.position);
+        distanceFromPlayer = Vector3.Distance(player.position, transform.position);
         spiderMesh.SetDestination(player.position);
 
-        if (distanceFromPlayer > 40)
+        if (distanceFromPlayer >= 35)
         {
             spiderMesh.isStopped = true;
             inRangeFire = false;
         }
 
-        else if(distanceFromPlayer <40 && distanceFromPlayer > 20)
+        else if(distanceFromPlayer<35 && distanceFromPlayer >= 20)
+		{
+            spiderMesh.isStopped = false;
+            inRangeFire = false;
+		}
+
+        else if(distanceFromPlayer <20 && distanceFromPlayer >= 15)
         {
-            spiderMesh.isStopped = true;
+            spiderMesh.isStopped = false;
+            transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
             inRangeFire = true;
 
         }
 
         else
         {
-            spiderMesh.isStopped = false;
+            spiderMesh.isStopped = true;
             transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
-            inRangeFire = false;
+            inRangeFire = true;
         }
 
         if(health == 0)
 		{
             Death();
+		}
+
+        if(inRangeFire == true)
+		{
+            if(fireCountdown <= 0)
+			{
+                GameObject venom = Instantiate(venomShot, venomSpot.position, transform.rotation);
+                venom.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * (100f * distanceFromPlayer));
+                fireCountdown = 6f / fireRate;
+			}
+            fireCountdown -= Time.deltaTime;
 		}
     }
 

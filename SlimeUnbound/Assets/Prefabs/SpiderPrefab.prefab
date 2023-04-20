@@ -31,6 +31,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1 &8102784618339427214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6656058030504165815}
+  m_Layer: 0
+  m_Name: VenomSpot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6656058030504165815
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8102784618339427214}
+  m_LocalRotation: {x: -0.055396646, y: -0.70568746, z: 0.055036604, w: 0.704207}
+  m_LocalPosition: {x: -0.0010025327, y: 0.039307587, z: -0.08272735}
+  m_LocalScale: {x: 0.031936806, y: 0.016077952, z: 0.032760084}
+  m_Children: []
+  m_Father: {fileID: 1252509497839794105}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1651545345990479954
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -157,9 +187,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  spider: {fileID: 0}
+  venomSpot: {fileID: 6656058030504165815}
+  venomShot: {fileID: 816534663717145485, guid: 9ee8fba42ac6a6043883bccbdffd975a, type: 3}
+  inRangeFire: 0
   health: 4
-  distanceFromPlayer: 0
 --- !u!195 &5358043409770482900
 NavMeshAgent:
   m_ObjectHideFlags: 0
