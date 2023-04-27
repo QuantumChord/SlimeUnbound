@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6490334744954716620}
   - component: {fileID: 3458355351197097494}
   - component: {fileID: 5857385588885412713}
+  - component: {fileID: 7095560343104369264}
   m_Layer: 0
   m_Name: BatFinished
   m_TagString: Untagged
@@ -70,7 +71,21 @@ MonoBehaviour:
   player: {fileID: 0}
   bat: {fileID: 0}
   distanceFromPlayer: 0
+  batHit: 0
+  hitTimer: 0
   health: 0
+--- !u!114 &7095560343104369264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6810094719329562607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c24eeed4f86574e4d8f4cab21814285f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6884789678655189765
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -35,13 +35,14 @@ public class SpiderEnemy : MonoBehaviour
             inRangeFire = false;
         }
 
-        else if(distanceFromPlayer<35 && distanceFromPlayer >= 20)
+        else if(distanceFromPlayer<35 && distanceFromPlayer >= 25)
 		{
-            spiderMesh.isStopped = false;
+			spiderMesh.isStopped = false;
+            transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
             inRangeFire = false;
 		}
 
-        else if(distanceFromPlayer <20 && distanceFromPlayer >= 15)
+        else if(distanceFromPlayer <25 && distanceFromPlayer >= 20)
         {
             spiderMesh.isStopped = false;
             transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));

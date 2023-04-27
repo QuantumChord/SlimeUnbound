@@ -28,7 +28,7 @@ public class BatEnemy : MonoBehaviour
         distanceFromPlayer = Vector3.Distance(bat.position, player.position);
         batMesh.SetDestination(player.position);
 
-        if (distanceFromPlayer > 40)
+        if (distanceFromPlayer > 20)
 		{
             batMesh.isStopped = true;
 		}
