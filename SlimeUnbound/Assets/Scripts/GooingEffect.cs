@@ -16,9 +16,17 @@ public class GooingEffect : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("SpiderEnemy"))
         {
-            other.GetComponent<PlayerScript>().speed = 5f;
+            other.GetComponent<SpiderEnemy>().gooingTrigger = true;
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("SpiderEnemy"))
+        {
+            other.GetComponent<SpiderEnemy>().gooingTrigger = false;
         }
     }
 }

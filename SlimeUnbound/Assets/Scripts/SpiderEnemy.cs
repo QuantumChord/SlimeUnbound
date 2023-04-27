@@ -17,6 +17,9 @@ public class SpiderEnemy : MonoBehaviour
     public int health;
 
     public float distanceFromPlayer;
+
+    public float gooSpeed = 2.5f;
+    public bool gooingTrigger;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,20 +32,20 @@ public class SpiderEnemy : MonoBehaviour
         distanceFromPlayer = Vector3.Distance(player.position, transform.position);
         spiderMesh.SetDestination(player.position);
 
-        if (distanceFromPlayer >= 35)
+        if (distanceFromPlayer >= 45)
         {
             spiderMesh.isStopped = true;
             inRangeFire = false;
         }
 
-        else if(distanceFromPlayer<35 && distanceFromPlayer >= 25)
+        else if(distanceFromPlayer<45 && distanceFromPlayer >= 35)
 		{
 			spiderMesh.isStopped = false;
             transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
             inRangeFire = false;
 		}
 
-        else if(distanceFromPlayer <25 && distanceFromPlayer >= 20)
+        else if(distanceFromPlayer <35 && distanceFromPlayer >= 20)
         {
             spiderMesh.isStopped = false;
             transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
@@ -72,8 +75,17 @@ public class SpiderEnemy : MonoBehaviour
 			}
             fireCountdown -= Time.deltaTime;
 		}
-    }
 
+        if(gooingTrigger == true)
+        {
+            spiderMesh.speed = gooSpeed;
+        }
+
+        else
+        {
+            spiderMesh.speed = 3.5f;
+        }
+    }
     public void Damage(int damageAmount)
     {
         health -= damageAmount;
