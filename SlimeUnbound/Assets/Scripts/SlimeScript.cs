@@ -27,13 +27,13 @@ public class SlimeScript : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.tag == "Collectibles")
+		if (other.CompareTag("Collectibles"))
 		{
 			points++;
 			Destroy(other.gameObject);
 		}
 
-		if (other.gameObject.tag == "PowerBoost")
+		if (other.CompareTag("PowerBoost"))
 		{
 			if (other.gameObject.GetComponent<PowerUp>().connectPow == 1 && (slimePower == 1 || slimePower == 0))
 			{

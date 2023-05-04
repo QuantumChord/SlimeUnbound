@@ -12,6 +12,10 @@ public class PlayerScript : MonoBehaviour
     public int health;
     public Text healthText;
 
+    public bool contact;
+    public float contactBySecond = 5f;
+    public int contactDamage = 1;
+
     public float speed = 8f;
     private float gravity = -9.81f;
     public float jumpHeight = 3f;
@@ -31,15 +35,23 @@ public class PlayerScript : MonoBehaviour
     public float shootCountDown = 0f;
     public float shootRate = 2f;
 
-    public bool puddleTrigger;
-    public GameObject gooZone;
-    public GameObject gooPuddle;
+    //public bool puddleTrigger;
+    //public GameObject gooZone;
+    //public GameObject gooPuddle;
+    //public int gooAmount;
 
     public Material[] slimeMat;
     public GameObject slimeBody;
 
+    public AudioSource slimeAudio;
+    public AudioClip slimeJump;
+    public AudioClip lavaShoot;
+    public AudioClip slimeShoot;
+    public int domainArea;
+
     void Start()
     {
+        slimeAudio = GetComponent<AudioSource>();
         projectile = projType[3];
         slimeBody.GetComponent<Renderer>().material = slimeMat[3];
     }
@@ -118,29 +130,18 @@ public class PlayerScript : MonoBehaviour
             speed = 8f;
         }
 
-        if (puddleTrigger)
-        {
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                speed = 10f;
-            }
-
-            else
-            {
-                speed = 5f;
-            }
-        }
-
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
             doubleJump = true;
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            slimeAudio.PlayOneShot(slimeJump, 1f);
         }
 
         if(Input.GetButtonDown("Jump") && !isGrounded && doubleJump)
         {
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             doubleJump = false;
+            slimeAudio.PlayOneShot(slimeJump, 1f);
         }
 
         playerVelocity.y += gravity * Time.deltaTime;
@@ -177,7 +178,15 @@ public class PlayerScript : MonoBehaviour
         {
             GameObject slimeProj = Instantiate(projectile, projectileOriginPosition, projectileRotation);
             slimeProj.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, projSpeed));
+            if(slimeType == 1)
+			{
+                slimeAudio.PlayOneShot(lavaShoot, 1f);
+            }
 
+			else
+			{
+                slimeAudio.PlayOneShot(slimeShoot, 1f);
+            }
             shootCountDown = 6f / shootRate;
         }
         shootCountDown -= Time.deltaTime;
@@ -209,25 +218,48 @@ public class PlayerScript : MonoBehaviour
         } 
 
         //This section allows the goo to be shot using the Q key
-        if (Input.GetKeyDown(KeyCode.Q))
+        /*if (Input.GetKeyDown(KeyCode.Q) && gooAmount >0)
         {
             DepositGooLoad();
-        }
+        }*/
+
+        if(contact == true)
+		{
+            if(contactBySecond > 0)
+			{
+                contactBySecond -= Time.deltaTime;
+			}
+
+			else
+			{
+                contact = false;
+                contactBySecond = 5f;
+			}
+		}
+
+		else
+		{
+            contactBySecond = 5f;
+		}
+
+        if(contactBySecond < 0)
+		{
+            contactBySecond = 0;
+		}
+
+        if(health <= 0)
+		{
+            Death();
+		}
     }
 
     //This changes how it reacts with slime puddles it leaves
-    public void OnTriggerEnter(Collider other)
+    /*public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("SlimePuddle"))
         {
             puddleTrigger = true;
         }
-
-		if (other.CompareTag("EnemyProj"))
-		{
-            int shotDamage = other.GetComponent<PoisonShot>().damage;
-            health -= shotDamage;
-		}
     }
 
     public void OnTriggerExit(Collider other)
@@ -236,44 +268,44 @@ public class PlayerScript : MonoBehaviour
         {
             puddleTrigger = false;
         }
-    }
+    }*/
 
-    //This has the player take damage from the enemies
-	public void OnCollisionEnter(Collision collision)
+	public void OnControllerColliderHit(ControllerColliderHit hit)
 	{
-            if (collision.collider.CompareTag("SpiderEnemy"))
-            {
-                ContactDamage();
-            }
+        if (hit.collider.CompareTag("SpiderEnemy")&& !contact && contactBySecond == 5f)
+        {
+            contact = true;
+            health-= contactDamage;
+            Debug.Log("SpiderHit");
+        }
 
-            if (collision.collider.CompareTag("BatEnemy"))
-            {
-                ContactDamage();
-            }
-            if (collision.collider.CompareTag("PlantEnemy"))
-            {
-                ContactDamage();
-            }
+        if (hit.collider.CompareTag("BatEnemy") && !contact && contactBySecond == 5f)
+        {
+            contact = true;
+            health -= contactDamage;
+            Debug.Log("BatHit");
+        }
+        if (hit.collider.CompareTag("PlantEnemy") && !contact && contactBySecond == 5f)
+        {
+            contact = true;
+            health -= contactDamage;
+            Debug.Log("PlantHit");
+        }
     }
-
-    public void ContactDamage()
-	{
-        --health;
-    }
-
     //This allows the slime to deposit the slime puddle
-	public void DepositGooLoad()
+	/*public void DepositGooLoad()
     {
         Instantiate(gooPuddle, gooZone.transform.position, gooPuddle.transform.rotation);
-    }
+    }*/
 
+    public void ProjDamage()
+	{
+        --health;
+	}
 
     //This destroyes the slime
     public void Death()
 	{
-        if (health == 0)
-		{
             Destroy(gameObject);
-		}
 	}
 }

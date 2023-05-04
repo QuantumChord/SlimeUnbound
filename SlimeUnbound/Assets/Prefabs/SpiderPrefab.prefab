@@ -144,22 +144,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b58f2a0a75345f140965c2afd85ab0c0, type: 3}
   m_PrefabInstance: {fileID: 1651545345990479954}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &9067904705789141668
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1885352843384941827}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!64 &8070680623512926532
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -191,6 +175,9 @@ MonoBehaviour:
   venomShot: {fileID: 816534663717145485, guid: 9ee8fba42ac6a6043883bccbdffd975a, type: 3}
   inRangeFire: 0
   health: 4
+  distanceFromPlayer: 0
+  gooSpeed: 2.5
+  gooingTrigger: 0
 --- !u!195 &5358043409770482900
 NavMeshAgent:
   m_ObjectHideFlags: 0

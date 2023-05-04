@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class PoisonShot : MonoBehaviour
 {
-	public int damage;
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 	public void OnTriggerEnter(Collider other)
 	{
@@ -21,6 +14,8 @@ public class PoisonShot : MonoBehaviour
 
 		if (other.CompareTag("Player"))
 		{
+			other.gameObject.GetComponent<PlayerScript>().ProjDamage();
+
 			Destroy(gameObject);
 		}
 	}
